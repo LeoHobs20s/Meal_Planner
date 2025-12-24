@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import UserCreationForm
 from .forms import LoginForm
 
 def login_view(request):
@@ -22,3 +23,12 @@ def login_view(request):
     
     context = {'form':form}
     return render(request, 'accounts/login.html', context)
+
+
+def logout_view(request):
+    """ This view will render the logout system """
+
+    logout(request)
+    return redirect('login_view')
+
+
