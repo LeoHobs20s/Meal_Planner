@@ -1,0 +1,19 @@
+{% extends 'meal_planners/base.html' %}
+
+{% block content %}
+
+    <head>
+        <title>Planner</title>
+    </head>
+
+    <body>
+        <ul>
+            {% for day in days %}
+                <li>{{ day.text|linebreaks }}</li>
+            {% empty %}
+                <li>No Scheduled meal days.</li>
+            {% endfor %}
+        </ul>
+    </body>
+
+{% endblock %}
