@@ -1,0 +1,17 @@
+{% extends 'meal_planners/base.html' %}
+
+{% block content %}
+
+    <div>
+        <h2>Add Day: </h2>
+    </div>
+
+    <div>
+        <form action="{% url 'add_day' %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Add Day</button>
+        </form>
+    </div>
+
+{% endblock %}

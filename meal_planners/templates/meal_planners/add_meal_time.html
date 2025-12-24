@@ -1,0 +1,12 @@
+{% extends 'meal_planners/base.html' %}
+
+{% block content %}
+
+    <form action="{% url 'add_meal_time' day.id %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit">Add Meal Time</button>
+    </form>
+
+{% endblock %}

@@ -13,9 +13,13 @@
         </div>
 
         <div>
+            <a href="{% url 'add_meal_time' day.id %}">Add Meal Time: </a>
+        </div>
+
+        <div>
             <ul>
                 {% for meal_time in meal_times %}
-                    <li>{{ meal_time.text }} :
+                    <li><a href="{% url 'add_meal' meal_time.id %}">{{ meal_time.text }}</a> :
                         {% for meal in meal_time.meal_set.all %}
                             {{ meal.text }}
                         {% endfor %}
