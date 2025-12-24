@@ -1,0 +1,18 @@
+{% extends 'meal_planners/base.html' %}
+
+{% block content %}
+
+    <div>
+        <h2>REGISTER: </h2>
+    </div>
+
+    <div>
+        <form action="{% url 'register' %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <button type="submit">Register</button>
+        </form>
+    </div>
+
+{% endblock %}

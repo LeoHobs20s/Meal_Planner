@@ -32,3 +32,22 @@ def logout_view(request):
     return redirect('login_view')
 
 
+def register(request):
+    """ This view will render the loog """
+
+    if request.method == 'POST':
+        # POST Data Submitted; process data
+        form = UserCreationForm(data=request.POST)
+        if form.is_valid():
+            new_user = form.save()
+            user = authenticate(username=new_user.username, password=request.POST['password1'])
+            if user is not None:
+                # logging in new user
+                login(request, user)
+                return redirect('home')
+    else:
+        # No Data Submitted; create blank form
+        form = UserCreationForm()
+    
+    context = {'form':form}
+    return render(request, 'accounts/register.html', context)
