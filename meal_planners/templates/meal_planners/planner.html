@@ -9,9 +9,11 @@
     <body>
         <ul>
             {% for day in days %}
-                <li>{{ day.text|linebreaks }}</li>
+                <li>
+                    <a href="{% url 'meal_time' day.id %}">{{ day.text|linebreaks }}</a>
+                </li>
             {% empty %}
-                <li>No Scheduled meal days.</li>
+                <li>No Scheduled meal plan.</li>
             {% endfor %}
         </ul>
     </body>

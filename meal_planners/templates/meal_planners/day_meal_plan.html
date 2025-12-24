@@ -1,0 +1,31 @@
+{% extends 'meal_planners/base.html' %}
+
+{% block content %}
+
+    <head>
+        <title>Day Meal Plan</title>
+    </head>
+
+    <body>
+
+        <div>
+            <h2>{{ day.text|linebreaks }}</h2>
+        </div>
+
+        <div>
+            <ul>
+                {% for meal_time in meal_times %}
+                    <li>{{ meal_time.text }} :
+                        {% for meal in meal_time.meal_set.all %}
+                            {{ meal.text }}
+                        {% endfor %}
+                    </li> </br>
+                {% empty %}
+                    <li>No day meal times yet.</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+    </body>
+
+{% endblock %}
